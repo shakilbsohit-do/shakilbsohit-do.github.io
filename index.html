@@ -2,117 +2,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shakil Ahmed | IT Portfolio</title>
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1120;
-  color: #e5e7eb;
-  line-height: 1.7;
-}
-header {
-  text-align: center;
-  padding: 70px 20px;
-  background: linear-gradient(135deg,#10243e,#075985);
-}
-header h1 { font-size: 42px; margin: 0; color: white; }
-header p { color: #dbeafe; }
-nav { padding: 15px; text-align: center; background: #111827; }
-nav a { color: #93c5fd; margin: 0 12px; text-decoration: none; }
-main { max-width: 950px; margin: auto; padding: 20px; }
-section {
-  background: #111827;
-  padding: 25px;
-  border: 1px solid #273449;
-  border-radius: 14px;
-  margin: 24px 0;
-}
-h2 { color: #60a5fa; }
-.skills { display: flex; flex-wrap: wrap; gap: 10px; }
-.skills span {
-  background: #1e3a5f;
-  padding: 7px 12px;
-  border-radius: 8px;
-}
-.project {
-  padding: 12px 0;
-  border-bottom: 1px solid #273449;
-}
-a { color: #93c5fd; }
-footer { text-align: center; padding: 25px; color: #9ca3af; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050807">
+  <meta name="description" content="Shakil Ahmed - IT professional specializing in networking, IT infrastructure, system administration and cybersecurity.">
+  <title>Shakil Ahmed | Cybersecurity & IT Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #050807;
+      --panel: #0b1210;
+      --green: #39ff88;
+      --green-soft: #9dffc3;
+      --text: #e2f2e8;
+      --muted: #9aaea2;
+      --border: #203d2b;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Consolas, "Courier New", monospace;
+      line-height: 1.7;
+    }
+
+    a { color: var(--green); text-decoration: none; }
+    a:hover { color: white; }
+
+    .container { width: min(1080px, 90%); margin: auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 8, 7, .96);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+
+    .logo { font-weight: bold; color: var(--green); }
+    .navlinks { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; }
+
+    .hero {
+      padding: 75px 0 65px;
+      background:
+        radial-gradient(ellipse at 80% 10%, #123d27 0%, transparent 45%),
+        linear-gradient(135deg, #050807, #09140e);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .terminal-label { color: var(--green); font-size: 14px; }
+    h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.15; margin: 15px 0; }
+    h1 span, h2 { color: var(--green); }
+    .subtitle { color: var(--green-soft); font-size: 17px; }
+    .muted { color: var(--muted); }
+
+    .profile-wrap {
+      justify-self: center;
+      width: min(260px, 100%);
+      padding: 9px;
+      border: 1px solid var(--green);
+      border-radius: 18px;
+      box-shadow: 0 0 30px #39ff8820;
+      background: var(--panel);
+    }
+
+    .profile-wrap img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid var(--green);
+      border-radius: 6px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .btn-primary { background: var(--green); color: #031008; }
+    .btn-primary:hover { background: white; color: #031008; }
+
+    section { padding: 48px 0; }
+    .section-title { margin: 0 0 22px; font-size: 25px; }
+    .prompt { color: var(--green); }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .skills, .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--green-soft);
+      background: #09100c;
+    }
+
+    .project {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 21px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .project:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .project h3 { color: var(--green-soft); margin-top: 0; }
+    .project-tag { color: var(--green); font-size: 12px; }
+
+    .contact-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .profile-wrap { width: 210px; }
+      .skills, .project-grid { grid-template-columns: 1fr; }
+      .navlinks { gap: 12px; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <h1>Shakil Ahmed</h1>
-  <p>IT Officer | Networking | System Administration</p>
-  <p>IT Infrastructure • Troubleshooting • Cybersecurity</p>
-</header>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<main>
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am an IT professional interested in networking,
-  IT infrastructure, hardware troubleshooting, Windows
-  administration and cybersecurity. I enjoy solving
-  technical problems and developing reliable IT solutions.</p>
-</section>
-
-<section id="skills">
-  <h2>Technical Skills</h2>
-  <div class="skills">
-    <span>Windows Support</span>
-    <span>TCP/IP Networking</span>
-    <span>IP Cameras & CCTV</span>
-    <span>PoE Switches</span>
-    <span>Printer Troubleshooting</span>
-    <span>Hardware Maintenance</span>
-    <span>Cybersecurity</span>
-    <span>PowerShell</span>
-    <span>GitHub</span>
+  <div class="topbar">
+    <nav class="container nav">
+      <a class="logo" href="#home">[ SHAKIL@IT ]</a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </div>
-</section>
 
-<section id="projects">
-  <h2>My Projects</h2>
-  <div class="project">
-    <h3>Network Infrastructure</h3>
-    <p>Network design concepts, switch connectivity,
-    IP camera systems and network troubleshooting.</p>
-  </div>
-  <div class="project">
-    <h3>IT Support Lab</h3>
-    <p>Windows diagnostics, printer configuration,
-    hardware support and TCP/IP troubleshooting.</p>
-  </div>
-  <div class="project">
-    <h3>Cybersecurity Learning Lab</h3>
-    <p>Learning security fundamentals, system hardening
-    and authorized security testing.</p>
-  </div>
-</section>
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="terminal-label">root@portfolio:~$ whoami</div>
+        <h1>Shakil <span>Ahmed</span></h1>
+        <p class="subtitle">IT Officer | Networking | Cybersecurity</p>
+        <p class="muted">
+          IT infrastructure, system administration, technical
+          troubleshooting and continuous cybersecurity learning.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#projects">Explore Projects →</a>
+          <a class="btn" href="cv.pdf" download>Download CV ↓</a>
+        </div>
+      </div>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:shakil.bsoh.it@gmail.com">
-  shakil.bsoh.it@gmail.com</a></p>
-  <p>GitHub:
-  <a href="https://github.com/shakilbsohit-do">
-  github.com/shakilbsohit-do</a></p>
-</section>
-</main>
+      <div class="profile-wrap">
+        <img src="profile.jpg" alt="Shakil Ahmed - IT professional"
+             onerror="this.onerror=null;this.src='https://placehold.co/400x500/0b1210/39ff88?text=Add+profile.jpg';">
+      </div>
+    </div>
+  </header>
 
-<footer>© 2026 Shakil Ahmed | Personal IT Portfolio</footer>
+  <main class="container">
+    <section id="about">
+      <h2 class="section-title"><span class="prompt">01.</span> About Me</h2>
+      <div class="panel">
+        <p class="terminal-label">$ cat about.txt</p>
+        <p>
+          I am an IT professional with an interest in network infrastructure,
+          Windows administration, hardware and printer troubleshooting,
+          IP camera systems, and cybersecurity.
+        </p>
+        <p class="muted">
+          My goal is to build reliable IT environments, solve technical
+          problems, document solutions, and strengthen my technical skills.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title"><span class="prompt">02.</span> Technical Skills</h2>
+      <div class="skills">
+        <div class="skill">› Windows Support</div>
+        <div class="skill">› TCP/IP Networking</div>
+        <div class="skill">› Network Troubleshooting</div>
+        <div class="skill">› PoE Switches</div>
+        <div class="skill">› CCTV & IP Cameras</div>
+        <div class="skill">› Printer Configuration</div>
+        <div class="skill">› Hardware Maintenance</div>
+        <div class="skill">› System Administration</div>
+        <div class="skill">› Cybersecurity Fundamentals</div>
+        <div class="skill">› PowerShell Basics</div>
+        <div class="skill">› Git & GitHub</div>
+        <div class="skill">› Technical Documentation</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title"><span class="prompt">03.</span> Featured Projects</h2>
+      <div class="project-grid">
+        <article class="project">
+          <div class="project-tag">[ NETWORKING ]</div>
+          <h3>Network Infrastructure</h3>
+          <p class="muted">
+            Network topology planning, switch connectivity,
+            IP addressing and infrastructure documentation.
+          </p>
+          <p class="muted">Tools: TCP/IP, switches, network diagrams</p>
+        </article>
+
+        <article class="project">
+          <div class="project-tag">[ IT SUPPORT ]</div>
+          <h3>Troubleshooting Lab</h3>
+          <p class="muted">
+            Documented Windows diagnostics, printer connectivity,
+            hardware checks and network troubleshooting.
+          </p>
+          <p class="muted">Tools: Windows, PowerShell, TCP/IP</p>
+        </article>
+
+        <article class="project">
+          <div class="project-tag">[ SECURITY LAB ]</div>
+          <h3>Cybersecurity Learning</h3>
+          <p class="muted">
+            A learning roadmap covering system hardening,
+            network security and authorized lab testing.
+          </p>
+          <p class="muted">Focus: defensive security and safe testing</p>
+        </article>
+      </div>
+      <p class="muted">
+        Note: These are portfolio project descriptions. Add links,
+        screenshots and results as you complete and document each project.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title"><span class="prompt">04.</span> Contact</h2>
+      <div class="panel">
+        <p class="terminal-label">$ ./connect.sh</p>
+        <p>Interested in IT, networking and cybersecurity opportunities?</p>
+        <div class="contact-links">
+          <a href="mailto:shakil.bsoh.it@gmail.com">[ Email Me ]</a>
+          <a href="https://github.com/shakilbsohit-do"
+             target="_blank" rel="noopener noreferrer">[ GitHub Profile ]</a>
+          <a href="cv.pdf" download>[ Download CV ]</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>ACCESS GRANTED // Shakil Ahmed</p>
+      <p>Personal IT & Cybersecurity Portfolio · 2026</p>
+    </div>
+  </footer>
 </body>
 </html>
